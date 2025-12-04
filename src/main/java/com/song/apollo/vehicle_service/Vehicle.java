@@ -39,7 +39,7 @@ public class Vehicle {
 
     @NotNull(message = "Fuel type is required")
     @Enumerated(EnumType.STRING)
-    String fuelType;
+    private FuelType fuelType;
 
     public enum FuelType {
         GASOLINE,
