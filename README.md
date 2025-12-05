@@ -42,7 +42,7 @@ The application follows a standard **Layered Architecture**:
 ### Running the Application
 1.  **Clone the repository:**
     ```bash
-    git clone [https://github.com/your-username/vehicle-service.git](https://github.com/tirsong/vehicle-service.git)
+    git clone [https://github.com/tirsong/vehicle-service.git](https://github.com/tirsong/vehicle-service.git)
     cd vehicle-service
     ```
 2.  **Build the project:**
