@@ -67,6 +67,13 @@ This interface allows you to:
 * Visualize all available endpoints.
 * See expected request bodies and response schemas.
 
+## Developer Documentation (Javadoc)
+To generate the full technical documentation (HTML) for this project, run the following command:
+
+```bash
+./mvnw javadoc:javadoc
+```
+
 ## Database Access (H2 Console)
 
 This application uses an in-memory H2 database. You can access the database console directly to verify data or run SQL queries.
