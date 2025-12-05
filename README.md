@@ -32,6 +32,7 @@ The application follows a standard **Layered Architecture**:
 * **H2 Database** (In-memory persistence)
 * **Lombok** (Boilerplate reduction)
 * **Maven** (Dependency management)
+* **SpringDoc OpenAPI** (Swagger UI Documentation)
 
 ## Getting Started
 
@@ -54,6 +55,28 @@ The application follows a standard **Layered Architecture**:
     ./mvnw spring-boot:run
     ```
 4.  **Access the API:** The server will start on `http://localhost:8080`.
+
+### API Documentation (Swagger)
+
+This application includes built-in API documentation using Swagger UI.
+
+Once the application is running, you can access the interactive documentation at:
+`http://localhost:8080/swagger-ui/index.html`
+
+This interface allows you to:
+* Visualize all available endpoints.
+* See expected request bodies and response schemas.
+
+### Database Access (H2 Console)
+
+This application uses an in-memory H2 database. You can access the database console directly to verify data or run SQL queries.
+* **URL:** `http://localhost:8080/h2-console`
+* **Driver Class:** `org.h2.Driver`
+* **JDBC URL:** `jdbc:h2:mem:vehicledb`
+* **Username:** `sa`
+* **Password:** `password`  
+
+*Note: Since this is an in-memory database, all data will be lost when the application stops.*
 
 ## API Endpoints
 Base URL: `/vehicle` (Note: Singular path based on current implementation).
@@ -79,3 +102,23 @@ The API includes a `GlobalExceptionHandler` to return consistent JSON errors:
     "horsePower": "Horsepower must be greater than 0",
     "purchasePrice": "Price cannot be negative"
 }
+```
+
+## Testing
+You can verify the API using cURL, Postman, or the built-in Swagger UI.
+For more comprehensive testing, refer to TESTING.md.
+
+Quick Test (Create Vehicle):
+```bash
+curl -v -X POST http://localhost:8080/vehicle \
+-H "Content-Type: application/json" \
+-d '{
+"vin": "INVALID-DATA-VIN",
+"manufacturerName": "Unknown",
+"modelName": "FailMobile",
+"description": "This should fail validation",
+"horsePower": -100,
+"purchasePrice": -5000.00,
+"fuelType": "Gasoline"
+}'
+```
