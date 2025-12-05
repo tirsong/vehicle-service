@@ -7,6 +7,15 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+/**
+ * REST Controller for managing Vehicle resources.
+ * <p>
+ * This class exposes endpoints for CRUD operations (Create, Read, Update, Delete)
+ * on vehicles. It handles incoming HTTP requests, invokes the business logic
+ * via {@link VehicleService}, and returns appropriate HTTP responses.
+ * <p>
+ * Base URL: /vehicle
+ */
 @RestController
 @RequestMapping("/vehicle")
 public class VehicleController {

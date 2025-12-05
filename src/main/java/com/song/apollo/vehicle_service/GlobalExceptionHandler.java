@@ -11,6 +11,13 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * Global exception handler for the Vehicle Service API.
+ * <p>
+ * This class uses {@link ControllerAdvice} to intercept exceptions thrown by any
+ * controller in the application. It transforms these exceptions into consistent,
+ * user-friendly JSON error responses with appropriate HTTP status codes.
+ */
 @ControllerAdvice
 public class GlobalExceptionHandler {
     /**

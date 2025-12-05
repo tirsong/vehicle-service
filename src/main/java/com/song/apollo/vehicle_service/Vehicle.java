@@ -12,6 +12,15 @@ import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
 
+/**
+ * Domain entity representing a Vehicle.
+ * <p>
+ * This class maps to the "vehicles" table in the database and includes
+ * validation constraints that are enforced during creation and updates.
+ * <p>
+ * Uses Lombok annotations to automatically generate getters, setters,
+ * constructors, and builder patterns at compile time.
+ */
 @Entity
 @Table(name = "vehicles")
 @Data
