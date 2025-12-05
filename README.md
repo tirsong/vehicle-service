@@ -56,7 +56,7 @@ The application follows a standard **Layered Architecture**:
     ```
 4.  **Access the API:** The server will start on `http://localhost:8080`.
 
-### API Documentation (Swagger)
+## API Documentation (Swagger)
 
 This application includes built-in API documentation using Swagger UI.
 
@@ -67,7 +67,7 @@ This interface allows you to:
 * Visualize all available endpoints.
 * See expected request bodies and response schemas.
 
-### Database Access (H2 Console)
+## Database Access (H2 Console)
 
 This application uses an in-memory H2 database. You can access the database console directly to verify data or run SQL queries.
 * **URL:** `http://localhost:8080/h2-console`
