@@ -70,5 +70,41 @@ public class VehicleControllerTest {
                 .andExpect(status().isNoContent());
     }
 
+    @Test
+    void createVehicle_ShouldReturnBadRequest_WhenJsonIsMalformed() throws Exception {
+        String malformedJson = """
+            {
+                "vin": "VIN123",
+                "manufacturerName": "Tesla"
+            """;
+        mockMvc.perform(post("/vehicle")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(malformedJson))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("$.error").value("Malformed JSON request"));
+    }
+
+    @Test
+    void createVehicle_ShouldReturnConflict_WhenVinAlreadyExists() throws Exception {
+        Vehicle requestVehicle = Vehicle.builder()
+                .vin("DUPLICATE-VIN")
+                .manufacturerName("Ford")
+                .modelName("Mustang")
+                .description("Muscle Car")
+                .horsePower(450)
+                .purchasePrice(new BigDecimal("40000.00"))
+                .fuelType(Vehicle.FuelType.GASOLINE)
+                .build();
+
+        when(vehicleService.createVehicle(any(Vehicle.class)))
+                .thenThrow(new IllegalArgumentException("VIN already exists"));
+
+        mockMvc.perform(post("/vehicle")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .content(objectMapper.writeValueAsString(requestVehicle)))
+                .andExpect(status().isConflict())
+                .andExpect(jsonPath("$.error").value("VIN already exists"));
+    }
+
 
 }
